@@ -1,0 +1,40 @@
+.row {
+    overflow: hidden;
+}
+
+.circle {
+    background: #4f6d43;
+    display: inline-block;
+}
+
+.bar {
+    display: block;
+    background: #4f6d43;
+    transition-duration: 1s;
+    transition-property: all;
+    animation: showBarGraph 1 1s ease-out forwards;
+}
+
+@keyframes showBarGraph {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+svg {
+    // background-color: #e0e0e094;
+    // background: rgb(238, 237, 237);
+    // border-radius: 2%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 5px;
+    // padding: 5%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 12px rgb(110, 107, 107);
+}
+
