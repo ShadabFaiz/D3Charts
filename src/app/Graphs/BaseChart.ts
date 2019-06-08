@@ -3,9 +3,9 @@ import { IRangeLimits } from '../models/IRangeModel';
 
 export abstract class BaseChart {
   protected readonly backgroundColor = 'green';
-  protected readonly spaceLeftonTop = 25;
-  protected readonly spaceLeftForLeftAxis = 25;
-  protected readonly spaceLeftOnBottomAxix = 25;
+  protected spaceLeftonTop = 25;
+  protected spaceLeftForLeftAxis = 25;
+  protected spaceLeftOnBottomAxix = 25;
   protected readonly transitionDuration = 1000;
   protected container: { clientWidth: number; clientHeight: number };
 

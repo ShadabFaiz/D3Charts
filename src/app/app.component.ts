@@ -1,9 +1,8 @@
-import { Component, AfterViewInit, NgZone } from '@angular/core';
-import { GraphGenerator } from './Graphs/Graphs';
-import { HorizontalBarChart } from './Graphs/HorizontalBarChart';
-import { VerticalBarChart } from './Graphs/VerticalBarChart';
-import { StackedBarChart } from './Graphs/StackedBarChart';
+import { Component, AfterViewInit } from '@angular/core';
 import { IStackBarData } from './models/IStackBarData';
+import * as d3 from 'd3';
+import { ScatterPlot } from './Graphs/ScatterPlot/ScatterPlot';
+import { IScatterPlotData } from './models/IScatterPlotData';
 
 @Component({
   selector: 'app-root',
@@ -42,10 +41,22 @@ export class AppComponent implements AfterViewInit {
   ];
 
   ngAfterViewInit() {
-    const chart = new StackedBarChart(this.dataForStackBarChart, 'svg');
-    chart.draw(this.dataForStackBarChart, `svg`);
-    // setTimeout(() => {
-    //   chart.updadteGraph(`svg`, [1, 4, 13, 4, 16, .5, 2, 55]);
-    // }, 2000);
+    // const chart = new StackedBarChart(this.dataForStackBarChart, 'svg');
+    // chart.draw(this.dataForStackBarChart, `svg`);
+    // // setTimeout(() => {
+    // //   chart.updadteGraph(`svg`, [1, 4, 13, 4, 16, .5, 2, 55]);
+    // // }, 2000);
+
+    this.drawScatterPlot();
+  }
+
+  drawScatterPlot() {
+    d3.csv(
+      'https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/2_TwoNum.csv'
+    ).then(datas => {
+      const graph = new ScatterPlot('svg');
+      // console.log(datas[datas.length - 1]);
+      graph.draw((datas as any) as IScatterPlotData[], 'svg');
+    });
   }
 }
